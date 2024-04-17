@@ -17,6 +17,5 @@ export class TodoInputComponent {
     todos.push(this.todo);
     localStorage.setItem('todos', JSON.stringify(todos));
     this.todo = '';
-    console.log('Działa');
   }
 }
