@@ -1,1 +1,3 @@
-<app-header></app-header>
+<div class="app" [class.dark-mode]="darkMode">
+    <app-header (switchModeEvent)="switchMode()"></app-header>
+</div>

@@ -1,8 +1,12 @@
 body {
-  background-image: url('assets/images/bg-desktop-light.jpg');
+  background-image: url("assets/images/bg-desktop-light.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  
+
   font-family: josefin sans, sans-serif;
 }
 
+body.dark-mode {
+  background-image: url(assets/images/bg-desktop-dark.jpg);
+  background-color: black;
+}
