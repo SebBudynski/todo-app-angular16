@@ -17,6 +17,10 @@ body.dark-mode {
   background-color: black;
 }
 
-.done {
+li.done {
   text-decoration: line-through;
+}
+
+.circle.done {
+  background: url(assets/images/icon-check.svg) no-repeat center center, linear-gradient(to right bottom, lightsteelblue, steelblue);
 }

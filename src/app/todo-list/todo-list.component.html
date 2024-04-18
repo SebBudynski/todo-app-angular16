@@ -4,7 +4,7 @@
     [ngClass]="{ done: todo.done }"
     (click)="onTodoClick(i)"
   >
-    <div class="circle"></div>
+    <div class="circle" [ngClass]="{ done: todo.done }"></div>
     {{ todo.text }}
   </li>
 </ul>
