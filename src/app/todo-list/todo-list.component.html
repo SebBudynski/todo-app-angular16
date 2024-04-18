@@ -1,3 +1,10 @@
 <ul>
-  <li *ngFor="let todo of todos"><div class="circle"></div>{{ todo }}</li>
+  <li
+    *ngFor="let todo of todos; index as i"
+    [ngClass]="{ done: todo.done }"
+    (click)="onTodoClick(i)"
+  >
+    <div class="circle"></div>
+    {{ todo.text }}
+  </li>
 </ul>

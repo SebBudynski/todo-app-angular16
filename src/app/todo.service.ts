@@ -5,16 +5,23 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class TodoService {
-  todosChanged = new Subject<string[]>();
+  todosChanged = new Subject<{ text: string; done: boolean }[]>();
+  private todos: { text: string; done: boolean }[] = [];
 
   addTodo(todo: string) {
-    const todos = JSON.parse(localStorage.getItem('todos') || '[');
-    todos.push(todo);
-    localStorage.setItem('todos', JSON.stringify(todos));
-    this.todosChanged.next(todos);
+    this.todos.push({ text: todo, done: false });
+    this.todosChanged.next(this.todos.slice());
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+  }
+
+  toggleDone(index: number) {
+    this.todos[index].done = !this.todos[index].done;
+    this.todosChanged.next(this.todos.slice());
+    localStorage.setItem('todos', JSON.stringify(this.todos));
   }
 
   getTodos() {
-    return JSON.parse(localStorage.getItem('todos') || '[]');
+    this.todos = JSON.parse(localStorage.getItem('todos') || '[]');
+    return this.todos.slice();
   }
 }

@@ -8,7 +8,7 @@ import { TodoService } from '../todo.service';
   styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent implements OnInit, OnDestroy {
-  todos: string[] = [];
+  todos: { text: string; done: boolean }[] = [];
   private todosSub: Subscription;
 
   constructor(private todoService: TodoService) {
@@ -18,7 +18,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.todos = this.todoService.getTodos();
     this.todosSub = this.todoService.todosChanged.subscribe(
-      (todos: string[]) => {
+      (todos: { text: string; done: boolean }[]) => {
         this.todos = todos;
       }
     );
@@ -26,5 +26,9 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.todosSub.unsubscribe();
+  }
+
+  onTodoClick(index: number) {
+    this.todoService.toggleDone(index);
   }
 }

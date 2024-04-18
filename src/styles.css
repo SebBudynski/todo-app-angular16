@@ -16,3 +16,7 @@ body.dark-mode {
   background-image: url(assets/images/bg-desktop-dark.jpg);
   background-color: black;
 }
+
+.done {
+  text-decoration: line-through;
+}
