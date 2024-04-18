@@ -20,3 +20,14 @@ li {
   border: solid 1px gray;
   margin: 0.75rem;
 }
+
+button {
+  margin: 0 0.5rem 0 auto;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+
+li:hover button {
+  display: block;
+}

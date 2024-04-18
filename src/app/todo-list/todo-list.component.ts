@@ -31,4 +31,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
   onTodoClick(index: number) {
     this.todoService.toggleDone(index);
   }
+
+  onDeleteClick(index: number) {
+    this.todoService.deleteTodo(index);
+  }
 }

@@ -24,4 +24,10 @@ export class TodoService {
     this.todos = JSON.parse(localStorage.getItem('todos') || '[]');
     return this.todos.slice();
   }
+
+  deleteTodo(index: number) {
+    this.todos.splice(index, 1);
+    this.todosChanged.next(this.todos.slice());
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+  }
 }
