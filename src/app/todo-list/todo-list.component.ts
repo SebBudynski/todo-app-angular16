@@ -9,6 +9,7 @@ import { TodoService } from '../todo.service';
 })
 export class TodoListComponent implements OnInit, OnDestroy {
   todos: { text: string; done: boolean }[] = [];
+  activeTodosCount: number = 0;
   private todosSub: Subscription;
 
   constructor(private todoService: TodoService) {
@@ -17,9 +18,11 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.todos = this.todoService.getTodos();
+    this.activeTodosCount = this.todoService.getActiveTodosCount();
     this.todosSub = this.todoService.todosChanged.subscribe(
       (todos: { text: string; done: boolean }[]) => {
         this.todos = todos;
+        this.activeTodosCount = this.todoService.getActiveTodosCount();
       }
     );
   }

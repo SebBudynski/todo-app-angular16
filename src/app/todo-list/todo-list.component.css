@@ -13,10 +13,6 @@ li {
   cursor: pointer;
 }
 
-ul li:last-child {
-  border-bottom: none;
-}
-
 .circle {
   width: 23px;
   height: 23px;
@@ -34,4 +30,10 @@ button {
 
 li:hover button {
   display: block;
+}
+
+footer {
+  background-color: whitesmoke;
+  border-radius: 5px;
+  padding: 0.5rem;
 }

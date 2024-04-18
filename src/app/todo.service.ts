@@ -30,4 +30,8 @@ export class TodoService {
     this.todosChanged.next(this.todos.slice());
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }
+
+  getActiveTodosCount() {
+    return this.todos.filter((todo) => !todo.done).length;
+  }
 }
