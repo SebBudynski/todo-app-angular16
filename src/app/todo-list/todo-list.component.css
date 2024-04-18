@@ -13,6 +13,10 @@ li {
   cursor: pointer;
 }
 
+ul li:last-child {
+  border-bottom: none;
+}
+
 .circle {
   width: 23px;
   height: 23px;
