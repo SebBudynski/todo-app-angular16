@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-todo-input',
@@ -8,14 +9,14 @@ import { Component } from '@angular/core';
 export class TodoInputComponent {
   todo = '';
 
+  constructor(private todoService: TodoService) {}
+
   addTodo() {
     if (this.todo.trim() === '') {
       return;
     }
 
-    const todos = JSON.parse(localStorage.getItem('todos') || '[]');
-    todos.push(this.todo);
-    localStorage.setItem('todos', JSON.stringify(todos));
+    this.todoService.addTodo(this.todo);
     this.todo = '';
   }
 }
