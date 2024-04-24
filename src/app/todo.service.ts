@@ -42,4 +42,10 @@ export class TodoService {
   getCompletedTodos() {
     return this.todos.filter((todo) => todo.done);
   }
+
+  clearCompleted() {
+    this.todos = this.todos.filter((todo) => !todo.done);
+    this.todosChanged.next(this.todos.slice());
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+  }
 }

@@ -51,4 +51,9 @@ export class TodoListComponent implements OnInit, OnDestroy {
   showCompleted() {
     this.todos = this.todoService.getCompletedTodos();
   }
+
+  clearCompleted() {
+    this.todoService.clearCompleted();
+    
+  }
 }
