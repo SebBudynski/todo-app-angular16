@@ -54,6 +54,22 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   clearCompleted() {
     this.todoService.clearCompleted();
-    
+  }
+
+  draggedItemIndex: number = 0;
+
+  onDragStart(event: DragEvent, index: number) {
+    event.dataTransfer!.setData('text/plain', index.toString());
+    this.draggedItemIndex = index;
+  }
+
+  onDragOver(event: DragEvent, index: number) {
+    event.preventDefault();
+  }
+
+  onDrop(event: DragEvent, index: number) {
+    event.preventDefault();
+    const droppedItemIndex = Number(event.dataTransfer!.getData('text'))
+    this.todoService.swapTodos(this.draggedItemIndex, index)
   }
 }

@@ -1,12 +1,19 @@
 <ul>
   <li
+    draggable="true"
     *ngFor="let todo of todos; index as i"
     [ngClass]="{ done: todo.done }"
     (click)="onTodoClick(i)"
+    (dragstart)="onDragStart($event, i)"
+    (dragover)="onDragOver($event, i)"
+    (drop)="onDrop($event, i)"
   >
     <div class="circle" [ngClass]="{ done: todo.done }"></div>
     {{ todo.text }}
-    <button class="delete-btn" (click)="$event.stopPropagation(); onDeleteClick(i)">
+    <button
+      class="delete-btn"
+      (click)="$event.stopPropagation(); onDeleteClick(i)"
+    >
       <img
         src="/assets/images/icon-cross.svg"
         alt="cross for deleting the todo"
@@ -22,5 +29,7 @@
     <button class="filter-btn" (click)="showActive()">Active</button>
     <button class="filter-btn" (click)="showCompleted()">Compleated</button>
   </div>
-  <button class="clear-completed" (click)="clearCompleted()">Clear completed</button>
+  <button class="clear-completed" (click)="clearCompleted()">
+    Clear completed
+  </button>
 </div>
