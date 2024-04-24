@@ -6,7 +6,7 @@
   >
     <div class="circle" [ngClass]="{ done: todo.done }"></div>
     {{ todo.text }}
-    <button (click)="$event.stopPropagation(); onDeleteClick(i)">
+    <button class="delete-btn" (click)="$event.stopPropagation(); onDeleteClick(i)">
       <img
         src="/assets/images/icon-cross.svg"
         alt="cross for deleting the todo"
@@ -15,6 +15,12 @@
   </li>
 </ul>
 
-<footer>
+<div class="bottom-bar">
   <span>{{ activeTodosCount }} items left</span>
-</footer>
+  <div class="filters-wrapper">
+    <button class="filter-btn" (click)="showAll()">All</button>
+    <button class="filter-btn" (click)="showActive()">Active</button>
+    <button class="filter-btn" (click)="showCompleted()">Compleated</button>
+  </div>
+  <button class="clear-completed">Clear completed</button>
+</div>

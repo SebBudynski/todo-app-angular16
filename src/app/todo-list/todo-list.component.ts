@@ -19,6 +19,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.todos = this.todoService.getTodos();
     this.activeTodosCount = this.todoService.getActiveTodosCount();
+
     this.todosSub = this.todoService.todosChanged.subscribe(
       (todos: { text: string; done: boolean }[]) => {
         this.todos = todos;
@@ -37,5 +38,17 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   onDeleteClick(index: number) {
     this.todoService.deleteTodo(index);
+  }
+
+  showAll() {
+    this.todos = this.todoService.getTodos();
+  }
+
+  showActive() {
+    this.todos = this.todoService.getActiveTodos();
+  }
+
+  showCompleted() {
+    this.todos = this.todoService.getCompletedTodos();
   }
 }

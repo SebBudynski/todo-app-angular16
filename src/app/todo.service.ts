@@ -34,4 +34,12 @@ export class TodoService {
   getActiveTodosCount() {
     return this.todos.filter((todo) => !todo.done).length;
   }
+
+  getActiveTodos() {
+    return this.todos.filter((todo) => !todo.done);
+  }
+
+  getCompletedTodos() {
+    return this.todos.filter((todo) => todo.done);
+  }
 }
