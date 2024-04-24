@@ -48,4 +48,12 @@ export class TodoService {
     this.todosChanged.next(this.todos.slice());
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }
+
+  swapTodos(fromIndex: number, toIndex: number) {
+    const temp = this.todos[fromIndex];
+    this.todos[fromIndex] = this.todos[toIndex];
+    this.todos[toIndex] = temp;
+    this.todosChanged.next(this.todos.slice());
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+  }
 }
